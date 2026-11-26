@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gap in Things — 사물의 틈</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+
+  <div class="scene scene-1">
+    <h1>사물의 <em>틈</em> </h1>
+  </div>
+
+  <div class="scene scene-2">
+    <h2>익숙한 사물에서<br>새로운 가능성을 발견합니다.</h2>
+  </div>
+
+  <div class="intro-progress">
+    <span id="introProgress"></span>
+  </div>
+
+  <button class="skip-intro" id="skipIntro">
+    SKIP INTRO ↗
+  </button>
+
+</section>
+
+
+<!-- ARCHIVE -->
+<main class="archive-page" id="archivePage">
+
+  <!-- HEADER -->
+  <header class="archive-header">
+
+    <a href="#" class="wordmark" id="replayIntro">
+      Gap in Things <span>/ 사물의 틈</span>
+    </a>
+
+    <div class="header-right">
+
+      <button id="replayButton" class="replay-button">
+        ↺ 처음으로
+      </button>
+
+      <button id="intentionButton" class="intention-button">
+        Story <span>↗</span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- TITLE -->
+  <section class="archive-title">
+
+    <div class="title-row">
+      <h2>뭘 적어야 하지<br><em>ㅜㅜ</em></h2>
+    </div>
+
+  </section>
+
+
+  <!-- ARCHIVE CONTENT -->
+  <section class="archive-shell">
+
+    <!-- CATEGORY PANEL -->
+    <aside class="category-panel">
+
+      <div class="panel-label"></div>
+
+      <nav class="category-list">
+
+        <button class="category-button active" data-category="chair">
+          <i></i>CHAIR<b>↗</b>
+        </button>
+
+        <button class="category-button" data-category="clothes">
+          <i></i>CLOTHES<b>↗</b>
+        </button>
+
+        <button class="category-button" data-category="bag">
+          <i></i>BAG<b>↗</b>
+        </button>
+
+        <button class="category-button" data-category="table">
+          <i></i>TABLE<b>↗</b>
+        </button>
+
+        <button class="category-button" data-category="architecture">
+        <span>ARCHITECTURE</span>
+    </button>
+      
+
+      </nav>
+
+      <div class="panel-bottom">
+        <span></span>
+      </div>
+
+    </aside>
+
+
+    <!-- GALLERY PANEL -->
+    <section class="gallery-panel">
+
+      <div class="gallery-toolbar">
+
+        <div>
+          <h3 id="currentCategory">
+            의자 <span>CHAIR</span>
+          </h3>
+        </div>
+
+        <div class="sort-area">
+
+          <button class="sort-button active" data-sort="imagination">
+            아트 ↑
+          </button>
+
+          <button class="sort-button" data-sort="practical">
+            실용 ↓
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="gallery-scroll" id="galleryScroll" tabindex="0">
+        <div class="photo-grid" id="photoGrid"></div>
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS PANEL -->
+    <aside class="progress-panel">
+
+
+      <div class="progress-track">
+        <i id="progressFill"></i>
+      </div>
+
+      <div class="progress-value">
+        <strong id="progressNumber">0</strong>%
+      </div>
+
+
+    </aside>
+
+  </section>
+
+
+  <!-- PROJECT DESCRIPTION -->
+  <section class="project-note"></section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer"></footer>
+
+</main>
+
+
+<!-- PROJECT INTENTION MODAL -->
+<div class="intention-modal" id="intentionModal">
+
+  <div class="intention-content">
+
+    <button class="intention-close" id="intentionClose" aria-label="닫기">
+      ×
+    </button>
+
+    
+
+    <h2>일상적인 모든 사물에서<br>새로운 가능성을 발견할 수 있습니다.</h2>
+
+    <div class="intention-divider"></div>
+
+    
+      <p>우리는 일반적으로 사물에 기능을 부여하며 대상을 이해하기 쉽습니다. 하지만 사물이 기능으로만 설명되지는 않습니다.</p>
+
+    
+      <p>'사물의 틈'은 사용자에게 사물의 익숙함을 넘어 새로운 의미를 직접 발견하고 비교해보는 인터랙티브 경험을 제공합니다.</p>
+    
+
+
+  </div>
+
+</div>
+
+
+<!-- MODAL STYLE -->
+<style>
+.intention-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 25, 35, 0.72);
+  backdrop-filter: blur(5px);
+}
+
+.intention-modal.active {
+  display: flex;
+}
+
+.intention-content {
+  position: relative;
+  width: min(620px, 100%);
+  padding: 55px;
+  background: #f4f7fa;
+  color: #263746;
+  animation: intentionAppear .3s ease;
+}
+
+.intention-close {
+  position: absolute;
+  top: 17px;
+  right: 22px;
+  border: 0;
+  background: none;
+  color: #718ba4;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.intention-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #849bb2;
+}
+
+.intention-content h2 {
+  margin: 30px 0;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.intention-divider {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 25px;
+  background: #d8e1e9;
+}
+
+.intention-content p {
+  margin: 0 0 18px;
+  color: #63717e;
+  font-size: 13px;
+  line-height: 2;
+  word-break: keep-all;
+}
+
+.intention-bottom {
+  margin-top: 35px;
+  padding-top: 15px;
+  border-top: 1px solid #d8e1e9;
+  color: #849bb2;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+@keyframes intentionAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .intention-content {
+    padding: 40px 25px;
+  }
+
+  .intention-content h2 {
+    font-size: 20px;
+  }
+}
+</style>
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
